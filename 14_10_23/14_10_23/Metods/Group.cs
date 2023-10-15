@@ -49,24 +49,31 @@ namespace _14_10_23.Metods
 
         public void RemoveStudent(int id)
         {
-            foreach (Student student in Students)
+            int index = -1;
+            for (int i = 0; i < Students.Length; i++)
             {
-                if (student.Id == id)
+                if (Students[i].Id == id)
                 {
-                    student.IsDeleted = true;
-                    Console.WriteLine($"\n\"{student.Name}\" removed from Students");
-                    return;
+                    index = i;
+                    break;
                 }
             }
+
+            if (index >= 0)
+            {
+                for (int i = index; i < Students.Length - 1; i++)
+                {
+                    Students[i] = Students[i + 1];
+                }
+                Array.Resize(ref Students, Students.Length - 1);
+            }
         }
+
         public void ShowStudents()
         {
             foreach (var student in Students)
             {
-                if (!student.IsDeleted)
-                {
-                    Console.WriteLine(student.GetInfo());
-                }
+                Console.WriteLine(student.GetInfo());
             }
         }
 
