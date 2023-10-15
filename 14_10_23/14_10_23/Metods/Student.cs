@@ -17,7 +17,6 @@ namespace _14_10_23.Metods
         public string Surname { get; private set; }
         public string CodeEmail { get; private set; }
         private static Student[] studentsArray = new Student[0];
-        public bool IsDeleted { get; set; }
 
 
 
@@ -28,7 +27,6 @@ namespace _14_10_23.Metods
                 Name = name.CapitalizeText();
                 Surname = surname.CapitalizeText();
                 Id = ++Count;
-                IsDeleted = false;
                 GenerateEmail();
                 AddStudentToStudentArray(this);
             }
